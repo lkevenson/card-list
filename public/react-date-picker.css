@@ -1,0 +1,12 @@
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 100%;
+}
+
+.react-datepicker__day--outside-month {
+  color: transparent !important;
+  pointer-events: none;
+  /* visibility: hidden; */
+}

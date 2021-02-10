@@ -1,9 +1,11 @@
-import AppBar from "../components/appbar";
-import GlobalStyles from "../components/GlobalStyles";
-import useStyles from "./app.style";
-import React from "react";
-import PropTypes from "prop-types";
+import GlobalStyles from "@/components/GlobalStyles";
+import AppBar from "@/components/shared/appbar";
+import "@/public/react-date-picker.css";
 import { ThemeProvider } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import React from "react";
+import "react-datepicker/dist/react-datepicker.css";
+import useStyles from "./app.style";
 import theme from "./theme";
 
 export default function MyApp(props) {

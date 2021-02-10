@@ -1,6 +1,5 @@
-import { Grid, Paper, Container, Hidden } from "@material-ui/core";
-import Page from "../components/page";
-
+import Page from "@/components/page";
+import { Container, Grid, Hidden, Paper } from "@material-ui/core";
 import useStyles from "./index.style";
 import CitizenSearch from "./views/citizenSearch";
 import DescriptionSection from "./views/descriptionSection";
@@ -38,7 +37,7 @@ export default function Home() {
             md={5}
             component={Paper}
             elevation={6}
-            square
+            // square
           >
             <CitizenSearch />
           </Grid>

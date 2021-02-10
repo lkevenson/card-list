@@ -1,20 +1,65 @@
-import { Avatar, Button, Box, Typography, TextField } from "@material-ui/core";
-import Copyright from "../../components/copyright";
-
+import Logo from "@/components/logo";
+import Copyright from "@/components/shared/copyright";
+import { Box, Button, Grid, IconButton, TextField } from "@material-ui/core";
+import CalendarIcon from "@material-ui/icons/CalendarToday";
+import React, { forwardRef, useState } from "react";
+import DatePicker from "react-datepicker";
+import { useForm } from "react-hook-form";
 import useStyles from "./citizenSearch.style";
-import Logo from "../../components/logo";
 
 const CitizenSearch = () => {
   const classes = useStyles();
 
+  const [startDate, setStartDate] = useState(new Date());
+  const { register, handleSubmit, reset, control } = useForm();
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    reset();
+  };
+
+  const InputDate = forwardRef((props, ref) => {
+    const { value, onClick } = props;
+    return (
+      <>
+        <Grid container spacing={1}>
+          <Grid item md={10} sm={10}>
+            <TextField
+              ref={ref}
+              inputRef={register}
+              id="dob"
+              name="dob"
+              label="Date of Birth"
+              defaultValue={value}
+              fullWidth
+              required
+              variant="filled"
+            />
+          </Grid>
+          <Grid item md={2} sm={2}>
+            <IconButton
+              aria-label="calendar"
+              color="primary"
+              className={classes.button}
+              onClick={onClick}
+            >
+              <CalendarIcon />
+            </IconButton>
+          </Grid>
+        </Grid>
+      </>
+    );
+  });
+
   return (
     <div className={classes.paper}>
-      <Logo width={160} height={120} />
+      <Logo width={100} height={100} />
       {/* <Typography component="h1" variant="h5">
         Sign in
       </Typography> */}
-      <form className={classes.form} noValidate>
+      <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
         <TextField
+          inputRef={register}
           variant="outlined"
           margin="normal"
           required
@@ -26,6 +71,7 @@ const CitizenSearch = () => {
           autoFocus
         />
         <TextField
+          inputRef={register}
           variant="outlined"
           margin="normal"
           required
@@ -36,17 +82,18 @@ const CitizenSearch = () => {
           autoComplete="first-name"
           autoFocus
         />
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label="DOB"
-          id="password"
-          autoComplete="current-password"
+        <DatePicker
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          peekNextMonth
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode="select"
+          // withPortal
+          disabledKeyboardNavigation
+          peekNextMonth={false}
+          customInput={<InputDate />}
         />
-
         <Button
           type="submit"
           fullWidth
@@ -56,11 +103,10 @@ const CitizenSearch = () => {
         >
           Search
         </Button>
-
-        <Box mt={5}>
-          <Copyright />
-        </Box>
       </form>
+      <Box mt={5}>
+        <Copyright />
+      </Box>
     </div>
   );
 };

@@ -1,7 +1,6 @@
-import React from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core/styles";
-import theme from "./theme";
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import React from "react";
 
 export default class MyDocument extends Document {
   render() {
@@ -16,11 +15,31 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,700&display=swap"
           />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/2.14.1/react-datepicker.min.css"
+          />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
+        <style jsx>
+          {`
+            .react-datepicker-wrapper,
+            .react-datepicker__input-container,
+            .react-datepicker__input-container input {
+              display: block;
+              width: 100%;
+            }
+
+            .react-datepicker__day--outside-month {
+              color: transparent !important;
+              pointer-events: none;
+              visibility: hidden;
+            }
+          `}
+        </style>
       </Html>
     );
   }
