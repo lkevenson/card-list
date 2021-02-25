@@ -1,8 +1,14 @@
-// import Logo from "@/component/";
-import Logo from "@/components/logo";
-import AppLink from "@/components/shared/app-link";
-import { AppBar, makeStyles, Toolbar, Typography } from "@material-ui/core";
+import {
+  AppBar,
+  Box,
+  makeStyles,
+  Toolbar,
+  Typography,
+} from "@material-ui/core";
 import PropTypes from "prop-types";
+import Logo from "../../components/logo";
+import AppLink from "../../components/shared/app-link";
+import SplitButton from "./split-button";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -14,18 +20,17 @@ const useStyles = makeStyles((theme) => ({
 const Header = (props) => {
   const classes = useStyles();
   return (
-    <AppBar color="primary" elevation={2}>
+    <AppBar color="primary" position="fixed" elevation={8}>
       <Toolbar>
         <Logo width={60} height={60} url={"/"} />
-        {/* <Link href="/">
-          <a className={classes.link}>
-            <Typography>{props.title}</Typography>
-          </a>
-        </Link> */}
-
+        <Box flexGrow={1} />
         <AppLink className={classes.link} href={"/"}>
-          <Typography>{props.title}</Typography>
+          <Typography variant="h3" component="p">
+            {props.title}
+          </Typography>
         </AppLink>
+        <Box flexGrow={1} />
+        <SplitButton />
       </Toolbar>
     </AppBar>
   );

@@ -1,0 +1,31 @@
+{
+  "error-with-status": "A ocurrido un error  {{statusCode}} en el servidor",
+  "error-without-status": "A ocurrido un error en el servidor",
+  "last-name": "Apellidos",
+  "first-name": "Nombre(s) ",
+  "dob": "Fecha de nacimiento",
+  "btn-search": "Buscar",
+  "btn-info": "Información",
+  "btn-home": "Inicio",
+  "description-title": "Archivo de descripción",
+  "description-content": "Contenido de descripción",
+  "record-not-found": "Datos no encontrados!!!",
+  "middle-name": "Apodo",
+  "pob": "Lugar de nacimiento",
+  "reg-place": "Centro de registro",
+  "action": "Acción",
+  "reg-date": "Fecha de registro",
+  "delivery-place": "Delivery Center",
+  "box": "Caja",
+  "packs": "Paquete",
+  "language": {
+    "title": "Idiomas",
+    "en": "Inglés",
+    "es": "Español",
+    "fr": "Francés",
+    "ht": "Criollo Haitiano"
+  },
+  "citizen-details": "Detalles del Ciudadano",
+  "home": "Inicio",
+  "results": "Resultados"
+}

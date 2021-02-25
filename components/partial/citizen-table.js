@@ -1,90 +1,137 @@
 import {
   Box,
+  Button,
   Card,
-  makeStyles,
   Table,
   TableBody,
   TableCell,
+  TableContainer,
   TableHead,
   TablePagination,
   TableRow,
   Typography,
 } from "@material-ui/core";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+// import * as moment from "moment";
+import useTranslation from "next-translate/useTranslation";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
-import { useState } from "react";
-import PerfectScrollbar from "react-perfect-scrollbar";
+import { useDispatch, useSelector } from "react-redux";
+import CustomizedProgress from "../../components/shared/circular-progress";
+import { addCitizen } from "../../redux/actions/citizen.action";
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    "&:nth-of-type(odd)": {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   avatar: {
     marginRight: theme.spacing(2),
   },
+  container: {
+    maxHeight: 420,
+  },
 }));
 
-const CitizenResults = ({ className, citizens, ...rest }) => {
+const CitizenResults = ({
+  className,
+  page,
+  limit,
+  handleLimitChange,
+  handlePageChange,
+  loading,
+  ...rest
+}) => {
   const classes = useStyles();
-  const [selectedCitizenIds, setSelectedCitizenIds] = useState([]);
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(0);
+  const dispatch = useDispatch();
 
-  const handleSelectAll = (event) => {
-    let newSelectedCitizenIds;
+  const { citizens, count } = useSelector((state) => state.inventory);
 
-    if (event.target.checked) {
-      newSelectedCitizenIds = citizens.map((citizen) => citizen.id);
-    } else {
-      newSelectedCitizenIds = [];
-    }
-
-    setSelectedCitizenIds(newSelectedCitizenIds);
-  };
-
-  const handleLimitChange = (event) => {
-    setLimit(event.target.value);
-  };
-
-  const handlePageChange = (event, newPage) => {
-    setPage(newPage);
-  };
+  let { t } = useTranslation();
+  let router = useRouter();
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
-      <PerfectScrollbar>
-        <Box>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Nom</TableCell>
-                <TableCell>Prenom</TableCell>
-                <TableCell>Surnom</TableCell>
-                <TableCell>Date de Naissance</TableCell>
-                <TableCell>Lieu de Naissance</TableCell>
-                <TableCell>Centre d'inscription</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {citizens.slice(0, limit).map((citizen) => (
-                <TableRow hover key={citizen.id}>
-                  <TableCell>
-                    <Typography color="textPrimary" variant="body1">
-                      {citizen.last_name}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>{citizen.first_name}</TableCell>
-                  <TableCell>{citizen.middle_name}</TableCell>
-                  <TableCell>{citizen.dob}</TableCell>
-                  <TableCell>{citizen.pob}</TableCell>
-                  <TableCell>{citizen.center}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
+      <Box>
+        <TableContainer className={classes.container}>
+          <Table stickyHeader aria-label="sticky table">
+            {loading ? (
+              <CustomizedProgress />
+            ) : (
+              <>
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>{t("common:action")}</StyledTableCell>
+                    <StyledTableCell>{t("common:last-name")}</StyledTableCell>
+                    <StyledTableCell>{t("common:first-name")}</StyledTableCell>
+                    <StyledTableCell>{t("common:middle-name")}</StyledTableCell>
+                    <StyledTableCell>{t("common:dob")}</StyledTableCell>
+                    <StyledTableCell>{t("common:pob")}</StyledTableCell>
+                    <StyledTableCell>{t("common:reg-place")}</StyledTableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {citizens &&
+                    citizens.slice(0, limit).map((citizen) => (
+                      <StyledTableRow hover key={citizen.id}>
+                        <StyledTableCell>
+                          <Button
+                            variant="outlined"
+                            color="secondary"
+                            onClick={() => {
+                              dispatch(addCitizen(citizen));
+                              router.push(
+                                `/card-result/card-result-info?info=${citizen.id}`,
+                                null,
+                                {
+                                  shallow: true,
+                                }
+                              );
+                            }}
+                          >
+                            {t("common:btn-info")}
+                          </Button>
+                        </StyledTableCell>
+                        <StyledTableCell>
+                          <Typography color="textPrimary" variant="body1">
+                            {citizen.last_name}
+                          </Typography>
+                        </StyledTableCell>
+                        <StyledTableCell>{citizen.first_name}</StyledTableCell>
+                        <StyledTableCell>{citizen.middle_name}</StyledTableCell>
+                        <StyledTableCell>
+                          {citizen.dob}
+                          {/* {moment(citizen.dob).format("DD/MM/YYYY")} */}
+                        </StyledTableCell>
+                        <StyledTableCell>{citizen.pob}</StyledTableCell>
+                        <StyledTableCell>{citizen.reg_place}</StyledTableCell>
+                      </StyledTableRow>
+                    ))}
+                </TableBody>
+              </>
+            )}
           </Table>
-        </Box>
-      </PerfectScrollbar>
+        </TableContainer>
+      </Box>
       <TablePagination
         component="div"
-        count={citizens.length}
+        count={count}
         onChangePage={handlePageChange}
         onChangeRowsPerPage={handleLimitChange}
         page={page}

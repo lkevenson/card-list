@@ -1,0 +1,31 @@
+{
+  "error-with-status": "A {{statusCode}} error occurred on server",
+  "error-without-status": "An error occurred on the server",
+  "last-name": "Lastname",
+  "first-name": "Firstname",
+  "dob": "Date of Birth",
+  "btn-search": "Search",
+  "btn-info": "View",
+  "btn-home": "Home",
+  "description-title": "Description file",
+  "description-content": "Description Content",
+  "record-not-found": "No Record found!!!",
+  "middle-name": "Middle name",
+  "pob": "Place of Birth",
+  "reg-place": "Registration Center",
+  "action": "Action",
+  "reg-date": "Registration Date",
+  "delivery-place": "Delivery Center",
+  "box": "Box",
+  "packs": "Package",
+  "language": {
+    "title": "Languages",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "ht": "Haitian Creole"
+  },
+  "citizen-details": "Citizen Details",
+  "home": "Home",
+  "results": "Results"
+}

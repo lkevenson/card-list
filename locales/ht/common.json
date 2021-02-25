@@ -1,0 +1,31 @@
+{
+  "error-with-status": "A {{statusCode}} error occurred on server",
+  "error-without-status": "An error occurred on the server",
+  "last-name": "Sinyati",
+  "first-name": "Non",
+  "dob": "Dat Nesans",
+  "btn-search": "Chache",
+  "btn-info": "Gade",
+  "btn-home": "Akey",
+  "description-title": "Deskripsyon",
+  "description-content": "Kontni Deskripsyon",
+  "record-not-found": "Nou pa rive jwenn anyen!!!",
+  "middle-name": "dezyem non",
+  "pob": "Place of Birth",
+  "reg-place": "Sant Anregistreman",
+  "action": "Aksyon",
+  "reg-date": "Registration Date",
+  "delivery-place": "Sant Livrezon",
+  "box": "Bwat",
+  "packs": "Pake",
+  "language": {
+    "title": "Lang",
+    "en": "Angle",
+    "es": "Panyòl",
+    "fr": "Franse",
+    "ht": "Kreyòl Ayisyen"
+  },
+  "citizen-details": "Detay sou sitwayen an",
+  "home": "Akey",
+  "results": "Rezilta"
+}

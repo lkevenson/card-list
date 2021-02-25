@@ -1,19 +1,19 @@
-import Page from "@/components/page";
 import { Container, Grid, Hidden, Paper } from "@material-ui/core";
+import useTranslation from "next-translate/useTranslation";
+import Page from "../components/page";
+import CitizenSearch from "../components/partial/citizenSearch";
+import DescriptionSection from "../components/partial/descriptionSection";
 import useStyles from "./index.style";
-import CitizenSearch from "./views/citizenSearch";
-import DescriptionSection from "./views/descriptionSection";
 
-export default function Home() {
+const Home = () => {
   const classes = useStyles();
-
-  const decription = "Text";
+  const { t } = useTranslation("common");
 
   return (
-    <Page className={classes.page} title="Home">
+    <Page className={classes.page} title={t("home")}>
       <Container maxWidth="md">
         <Grid container component="main" className={classes.container}>
-          <Hidden mdDown>
+          <Hidden smDown>
             <Grid
               item
               xs={false}
@@ -36,8 +36,8 @@ export default function Home() {
             sm={8}
             md={5}
             component={Paper}
-            elevation={6}
-            // square
+            elevation={0}
+            square
           >
             <CitizenSearch />
           </Grid>
@@ -45,4 +45,6 @@ export default function Home() {
       </Container>
     </Page>
   );
-}
+};
+
+export default Home;

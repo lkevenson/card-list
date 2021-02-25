@@ -9,13 +9,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
-  importButton: {
-    marginRight: theme.spacing(1),
-  },
-  exportButton: {
-    marginRight: theme.spacing(1),
-  },
+  root: { paddingBottom: theme.spacing(2) },
 }));
 
 const Topbar = ({ className, title, ...rest }) => {
@@ -30,9 +24,6 @@ const Topbar = ({ className, title, ...rest }) => {
               <Typography variant="h3" component="h1">
                 {title}
               </Typography>
-              {/* <Typography variant="body1" component="p">
-                10-Avril-1989
-              </Typography> */}
             </Box>
           </CardContent>
         </Card>

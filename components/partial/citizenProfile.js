@@ -6,6 +6,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import clsx from "clsx";
+// import * as moment from "moment";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -21,12 +22,13 @@ const Profile = ({ className, citizen, ...rest }) => {
       <CardContent>
         <Box display="flex" flexDirection="column">
           <Typography color="textPrimary" variant="h2">
-            {`${last_name.toUpperCase()},${first_name}`}
+            {`${last_name?.toUpperCase()}, ${first_name}`}
           </Typography>
           <Typography color="textSecondary" gutterBottom variant="h3">
             {middle_name}
           </Typography>
           <Typography color="textSecondary" gutterBottom variant="subtitle1">
+            {/* {moment(dob).format("DD/MM/YYYY")} */}
             {dob}
           </Typography>
         </Box>

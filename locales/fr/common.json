@@ -1,0 +1,31 @@
+{
+  "error-with-status": "A {{statusCode}} error occurred on server",
+  "error-without-status": "An error occurred on the server",
+  "last-name": "Nom",
+  "first-name": "Prénom",
+  "dob": "Date de Naissance",
+  "btn-search": "Rechercher",
+  "btn-info": "Voir",
+  "btn-home": "Accueil",
+  "description-title": "Description ",
+  "description-content": "Description Contenu",
+  "record-not-found": "Aucun Enregistrement Trouvé!!!",
+  "middle-name": "Second prénom",
+  "pob": "Lieu de Naissance",
+  "reg-place": "Lieu d'enregistrement",
+  "action": "Action",
+  "reg-date": "Date d'enregistrement",
+  "delivery-place": "Centre de livraison",
+  "box": "Boite",
+  "packs": "Paquet",
+  "language": {
+    "title": "Langues",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Francais",
+    "ht": "Creole Haitien"
+  },
+  "citizen-details": "Détails du citoyen",
+  "home": "Accueil",
+  "results": "Resultats"
+}
