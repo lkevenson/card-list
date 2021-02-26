@@ -18,7 +18,7 @@ const CardHistory = (props) => {
   const { reg_date, delivery_place, box, packs } = data;
   return (
     <Card>
-      <CardHeader subheader="The information can be edited" title="Profile" />
+      <CardHeader subheader={t("info-text")} title="Profile" />
       <Divider />
       <CardContent>
         <Grid container spacing={3}>

@@ -16,7 +16,4 @@ const store = createStore(
 const makeStore = () => store;
 export const wrapper = createWrapper(makeStore);
 
-// const makeStore = () => store;
-// export default wrapper = createWrapper(makeStore);
-
 export default store;

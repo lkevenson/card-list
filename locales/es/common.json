@@ -18,6 +18,8 @@
   "delivery-place": "Delivery Center",
   "box": "Caja",
   "packs": "Paquete",
+  "search-for-data": "Searching...",
+  "info-text": "The information can be edited",
   "language": {
     "title": "Idiomas",
     "en": "Inglés",

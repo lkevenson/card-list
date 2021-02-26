@@ -1,4 +1,3 @@
-// import Logo from "@/components/logo";
 import { Box, Button, Grid, IconButton, TextField } from "@material-ui/core";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
 import useTranslation from "next-translate/useTranslation";
@@ -97,7 +96,6 @@ function CitizenSearch() {
           showMonthDropdown
           showYearDropdown
           dropdownMode="select"
-          // withPortal
           disabledKeyboardNavigation
           peekNextMonth={false}
           customInput={<InputDate />}

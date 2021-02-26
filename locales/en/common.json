@@ -16,6 +16,8 @@
   "action": "Action",
   "reg-date": "Registration Date",
   "delivery-place": "Delivery Center",
+  "search-for-data": "Searching...",
+  "info-text": "The information can be edited",
   "box": "Box",
   "packs": "Package",
   "language": {

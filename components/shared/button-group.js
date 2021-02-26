@@ -23,8 +23,6 @@ export default function BasicButtonGroup() {
   return (
     <div className={classes.root}>
       <ButtonGroup
-        // color="secondary"
-        // variant="contained"
         style={{
           backgroundColor: "#fff",
         }}

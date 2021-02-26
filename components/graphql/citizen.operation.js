@@ -14,6 +14,7 @@ export const SEARCH_CITIZEN_QUERY = gql`
         reg_date
         box
         packs
+        status
       }
       count
     }
@@ -41,11 +42,8 @@ export const CITIZEN_BY_ID_QUERY = gql`
       reg_place
       pob
       reg_date
-      # delivery_place
       box
       packs
     }
   }
 `;
-
-// take: Int, skip: Int

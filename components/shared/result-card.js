@@ -3,6 +3,7 @@ import {
   CardContent,
   Grid,
   makeStyles,
+  Paper,
   Typography,
 } from "@material-ui/core";
 import { deepOrange, deepPurple } from "@material-ui/core/colors";
@@ -27,16 +28,16 @@ const ResultCard = ({ title, value, className, ...rest }) => {
     <Card className={classes.root} {...rest}>
       <CardContent>
         <Grid container justify="space-between" spacing={3}>
-          <Grid item xl={12}>
+          <Grid item md={12}>
             <Typography color="textSecondary" gutterBottom variant="h6">
               {title}
             </Typography>
           </Grid>
-          <Grid item xl={12}>
+          <Grid item md={12}>
             {value && (
-              <Typography className={classes.orange} variant="rounded">
+              <Paper className={classes.orange} variant="rounded">
                 {value}
-              </Typography>
+              </Paper>
             )}
           </Grid>
         </Grid>

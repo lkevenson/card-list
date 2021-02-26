@@ -6,7 +6,6 @@ import {
   Typography,
 } from "@material-ui/core";
 import clsx from "clsx";
-// import * as moment from "moment";
 import PropTypes from "prop-types";
 import React from "react";
 

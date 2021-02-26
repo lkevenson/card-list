@@ -10,10 +10,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Provider } from "react-redux";
 import GlobalStyles from "../components/GlobalStyles";
 import AppBar from "../components/shared/appbar";
-import { useApollo } from "../lib/apolloClient";
-import "../public/nprogress.css";
-import "../public/react-date-picker.css";
+import { useApollo } from "../lib/apollo.client";
 import store, { wrapper } from "../redux/store";
+import "../styles/nprogress.css";
+import "../styles/react-date-picker.css";
 import theme from "../theme";
 import useStyles from "./app.style";
 

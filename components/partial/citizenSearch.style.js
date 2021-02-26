@@ -19,26 +19,14 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
   textFieldDate: {
-    // marginLeft: theme.spacing(1),
-    // marginRight: theme.spacing(1),
-    // width: 200,
-
     font: "inherit",
     width: "100%",
-    // border: 0,
     height: "1.1876em",
     margin: 0,
-    // display: "block",
-    // padding: "6px 0 7px",
     padding: theme.spacing(1),
-
     minWidth: 0,
     background: "none",
     boxSizing: "content-box",
-    // animation-name: 'mui-auto-fill-cancel',
-    // letter-spacing: 'inherit',
-    // animation-duration: '10ms',
-    // -webkit-tap-highlight-color: 'transparent',
   },
 }));
 

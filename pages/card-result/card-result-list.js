@@ -55,23 +55,8 @@ const CardResultList = () => {
   };
 
   const result = (ctz, load, err) => {
-    console.log(err);
     if (err) {
-      return (
-        <>
-          {/* <Typography variant="h2" component="h1" gutterBottom>
-            500 | Internal Server Error
-          </Typography>
-
-          <Button variant="outlined" color="secondary">
-            <Link href="/">
-              <a>{t("btn-home")}</a>
-            </Link>
-          </Button> 
-          */}
-          <ErrorPage statusCode={500} title="Internal Server Error" />
-        </>
-      );
+      return <ErrorPage statusCode={500} title="Internal Server Error" />;
     } else {
       if (Array.isArray(ctz) && ctz.length) {
         return (
@@ -86,11 +71,19 @@ const CardResultList = () => {
           />
         );
       } else {
-        return (
-          <Typography variant="h2" component="p">
-            {t("record-not-found")}
-          </Typography>
-        );
+        if (load) {
+          return (
+            <Typography variant="h2" component="p">
+              {t("search-for-data")}
+            </Typography>
+          );
+        } else {
+          return (
+            <Typography variant="h2" component="p">
+              {t("record-not-found")}
+            </Typography>
+          );
+        }
       }
     }
   };
