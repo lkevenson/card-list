@@ -18,7 +18,7 @@
   "delivery-place": "Centre de livraison",
   "box": "Boite",
   "packs": "Paquet",
-  "search-for-data": "Searching...",
+  "search-for-data": "Recherche en cours...",
   "info-text": "The information can be edited",
   "language": {
     "title": "Langues",
@@ -29,5 +29,8 @@
   },
   "citizen-details": "Détails du citoyen",
   "home": "Accueil",
-  "results": "Resultats"
+  "results": "Resultats",
+  "loading": "Chargement en cours",
+  "waiting": "Veuillez patientez",
+  "contact": "Contact us"
 }

@@ -29,5 +29,8 @@
   },
   "citizen-details": "Detay sou sitwayen an",
   "home": "Akey",
-  "results": "Rezilta"
+  "results": "Rezilta",
+  "loading": "Chargement en cours",
+  "waiting": "Veuillez patientez",
+  "contact": "Contact us"
 }

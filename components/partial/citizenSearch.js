@@ -1,5 +1,6 @@
 import { Box, Button, Grid, IconButton, TextField } from "@material-ui/core";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
+import * as moment from "moment";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import React, { forwardRef, useState } from "react";
@@ -11,7 +12,8 @@ import useStyles from "./citizenSearch.style";
 
 function CitizenSearch() {
   const classes = useStyles();
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(moment().subtract(18, "years")._d);
+  // const [startDate, setStartDate] = useState(new Date());
   const router = useRouter();
   let { t } = useTranslation();
 
@@ -42,6 +44,7 @@ function CitizenSearch() {
               fullWidth
               required
               variant="filled"
+              onClick={onClick}
             />
           </Grid>
           <Grid item md={2} sm={2}>
@@ -89,10 +92,14 @@ function CitizenSearch() {
           autoFocus
         />
         <DatePicker
-          dateFormat="yyyy-MM-dd"
+          // dateFormat="yyyy-MM-dd"
+          dateFormat="dd-MM-yyyy"
           selected={startDate}
           onChange={(date) => setStartDate(date)}
           peekNextMonth
+          minDate={moment().subtract(100, "years")._d}
+          maxDate={moment().subtract(18, "years")._d}
+          showDisabledMonthNavigation
           showMonthDropdown
           showYearDropdown
           dropdownMode="select"

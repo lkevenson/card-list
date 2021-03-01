@@ -29,5 +29,8 @@
   },
   "citizen-details": "Detalles del Ciudadano",
   "home": "Inicio",
-  "results": "Resultados"
+  "results": "Resultados",
+  "loading": "Loading",
+  "waiting": "Please wait",
+  "contact": "Contact us"
 }

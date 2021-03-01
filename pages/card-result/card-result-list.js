@@ -1,5 +1,5 @@
 import { useLazyQuery } from "@apollo/client";
-import { Box, Container, Typography } from "@material-ui/core";
+import { Box, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import useTranslation from "next-translate/useTranslation";
 import ErrorPage from "next/error";
@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { SEARCH_CITIZEN_QUERY } from "../../components/graphql/citizen.operation";
+import NoResultPage from "../../components/info/no-result";
+import SearchPage from "../../components/info/search";
 import Page from "../../components/page";
 import CitizenResults from "../../components/partial/citizen-table";
 import { fetchCitizens } from "../../redux/actions/citizen.action";
@@ -73,15 +75,17 @@ const CardResultList = () => {
       } else {
         if (load) {
           return (
-            <Typography variant="h2" component="p">
-              {t("search-for-data")}
-            </Typography>
+            // <Typography variant="h2" component="p">
+            //   {t("search-for-data")}
+            // </Typography>
+            <SearchPage loading={load} />
           );
         } else {
           return (
-            <Typography variant="h2" component="p">
-              {t("record-not-found")}
-            </Typography>
+            // <Typography variant="h2" component="p">
+            //   {t("record-not-found")}
+            // </Typography>
+            <NoResultPage />
           );
         }
       }

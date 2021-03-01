@@ -29,5 +29,8 @@
   },
   "citizen-details": "Citizen Details",
   "home": "Home",
-  "results": "Results"
+  "results": "Results",
+  "loading": "Loading",
+  "waiting": "Please wait",
+  "contact": "Contact us"
 }
