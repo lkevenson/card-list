@@ -1,30 +1,60 @@
-import { Box, Button, Grid, IconButton, TextField } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  MenuItem,
+  TextField,
+} from "@material-ui/core";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
 import * as moment from "moment";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import React, { forwardRef, useState } from "react";
-import DatePicker from "react-datepicker";
 import { useForm } from "react-hook-form";
 import Logo from "../logo";
 import Copyright from "../shared/copyright";
+import ReactHookFormSelect from "../shared/react-hook-form-select";
 import useStyles from "./citizenSearch.style";
+
+const months = [
+  { key: "01", value: "January" },
+  { key: "02", value: "February" },
+  { key: "03", value: "March" },
+  { key: "04", value: "April" },
+  { key: "05", value: "May" },
+  { key: "06", value: "June" },
+  { key: "07", value: "July" },
+  { key: "08", value: "August" },
+  { key: "09", value: "September" },
+  { key: "10", value: "October" },
+  { key: "11", value: "November" },
+  { key: "12", value: "December" },
+];
 
 function CitizenSearch() {
   const classes = useStyles();
   const [startDate, setStartDate] = useState(moment().subtract(18, "years")._d);
   // const [startDate, setStartDate] = useState(new Date());
   const router = useRouter();
-  let { t } = useTranslation();
+  let { t } = useTranslation("common");
 
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, control } = useForm();
 
-  const onSubmit = async (input) => {
+  const onSubmit = async ({ day, last_name, first_name, year, month }) => {
     reset();
+
+    const jour = day < 10 ? `0${day}` : `${day}`;
 
     router.push({
       pathname: "/card-result/card-result-list",
-      query: { data: JSON.stringify(input) },
+      query: {
+        data: JSON.stringify({
+          last_name: last_name,
+          first_name: first_name,
+          dob: `${jour}-${month}-${year}`,
+        }),
+      },
     });
   };
 
@@ -39,7 +69,7 @@ function CitizenSearch() {
               inputRef={register}
               id="dob"
               name="dob"
-              label={`${t("common:dob")}`}
+              label={`${t("dob")}`}
               defaultValue={value}
               fullWidth
               required
@@ -74,7 +104,7 @@ function CitizenSearch() {
           required
           fullWidth
           id="last_name"
-          label={`${t("common:last-name")}`}
+          label={`${t("last-name")}`}
           name="last_name"
           autoComplete="last-name"
           autoFocus
@@ -86,12 +116,72 @@ function CitizenSearch() {
           required
           fullWidth
           id="first_name"
-          label={`${t("common:first-name")}`}
+          label={`${t("first-name")}`}
           name="first_name"
           autoComplete="first-name"
-          autoFocus
+          // autoFocus
         />
-        <DatePicker
+
+        <Grid container spacing={1}>
+          <Grid item md={3} sm={12}>
+            <TextField
+              inputRef={register}
+              variant="outlined"
+              margin="normal"
+              type="number"
+              required
+              fullWidth
+              id="day"
+              label={`${t("calendar.day")}`}
+              name="day"
+              InputProps={{ inputProps: { min: 1, max: 31 } }}
+            />
+          </Grid>
+          <Grid item md={5} sm={12}>
+            <ReactHookFormSelect
+              id="month"
+              name="month"
+              className={classes.textField}
+              label={`${t("calendar.month")}`}
+              control={control}
+              variant="outlined"
+              margin="normal"
+              defaultValue=""
+              required
+              fullWidth
+            >
+              {months.map(({ key }) => {
+                return (
+                  <MenuItem key={key} value={key}>
+                    {t(`calendar.months.${key}`)}
+                  </MenuItem>
+                );
+              })}
+            </ReactHookFormSelect>
+          </Grid>
+          <Grid item md={4} sm={12}>
+            <TextField
+              inputRef={register}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              type="number"
+              id="year"
+              label={`${t("calendar.year")}`}
+              name="year"
+              InputProps={{
+                inputProps: {
+                  min: moment().subtract(100, "years").year(),
+                  max: moment().subtract(18, "years").year(),
+                },
+              }}
+            />
+          </Grid>
+          {/* minDate={moment().subtract(100, "years")._d}
+          maxDate={moment().subtract(18, "years")._d} */}
+        </Grid>
+        {/* <DatePicker
           // dateFormat="yyyy-MM-dd"
           dateFormat="dd-MM-yyyy"
           selected={startDate}
@@ -106,7 +196,7 @@ function CitizenSearch() {
           disabledKeyboardNavigation
           peekNextMonth={false}
           customInput={<InputDate />}
-        />
+        /> */}
         <Button
           type="submit"
           fullWidth
@@ -114,7 +204,7 @@ function CitizenSearch() {
           color="primary"
           className={classes.submit}
         >
-          {t("common:btn-search")}
+          {t("btn-search")}
         </Button>
       </form>
       <Box mt={5}>
