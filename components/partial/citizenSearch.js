@@ -10,7 +10,7 @@ import CalendarIcon from "@material-ui/icons/CalendarToday";
 import * as moment from "moment";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef } from "react";
 import { useForm } from "react-hook-form";
 import Logo from "../logo";
 import Copyright from "../shared/copyright";
@@ -34,7 +34,7 @@ const months = [
 
 function CitizenSearch() {
   const classes = useStyles();
-  const [startDate, setStartDate] = useState(moment().subtract(18, "years")._d);
+  // const [startDate, setStartDate] = useState(moment().subtract(18, "years")._d);
   // const [startDate, setStartDate] = useState(new Date());
   const router = useRouter();
   let { t } = useTranslation("common");
@@ -44,7 +44,10 @@ function CitizenSearch() {
   const onSubmit = async ({ day, last_name, first_name, year, month }) => {
     reset();
 
-    const jour = day < 10 ? `0${day}` : `${day}`;
+    const dateOfBirth =
+      day && month && year
+        ? `${day < 10 ? `0${day}` : `${day}`}-${month}-${year}`
+        : null;
 
     router.push({
       pathname: "/card-result/card-result-list",
@@ -52,7 +55,7 @@ function CitizenSearch() {
         data: JSON.stringify({
           last_name: last_name,
           first_name: first_name,
-          dob: `${jour}-${month}-${year}`,
+          dob: dateOfBirth,
         }),
       },
     });
@@ -123,13 +126,13 @@ function CitizenSearch() {
         />
 
         <Grid container spacing={1}>
-          <Grid item md={3} sm={12}>
+          <Grid item md={3} xs={3}>
             <TextField
               inputRef={register}
               variant="outlined"
               margin="normal"
               type="number"
-              required
+              // required
               fullWidth
               id="day"
               label={`${t("calendar.day")}`}
@@ -137,7 +140,7 @@ function CitizenSearch() {
               InputProps={{ inputProps: { min: 1, max: 31 } }}
             />
           </Grid>
-          <Grid item md={5} sm={12}>
+          <Grid item md={5} xs={5}>
             <ReactHookFormSelect
               id="month"
               name="month"
@@ -147,7 +150,7 @@ function CitizenSearch() {
               variant="outlined"
               margin="normal"
               defaultValue=""
-              required
+              // required
               fullWidth
             >
               {months.map(({ key }) => {
@@ -159,12 +162,12 @@ function CitizenSearch() {
               })}
             </ReactHookFormSelect>
           </Grid>
-          <Grid item md={4} sm={12}>
+          <Grid item md={4} xs={4}>
             <TextField
               inputRef={register}
               variant="outlined"
               margin="normal"
-              required
+              // required
               fullWidth
               type="number"
               id="year"
