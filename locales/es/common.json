@@ -19,7 +19,7 @@
   "box": "Caja",
   "packs": "Paquete",
   "search-for-data": "Searching...",
-  "info-text": "The information can be edited",
+  "info-text": "La información se puede editar",
   "language": {
     "title": "Idiomas",
     "en": "Inglés",
@@ -28,6 +28,8 @@
     "ht": "Criollo Haitiano"
   },
   "citizen-details": "Detalles del Ciudadano",
+  "delivered-card": "Tarjeta Entregada",
+
   "home": "Inicio",
   "results": "Resultados",
   "loading": "Cargando",

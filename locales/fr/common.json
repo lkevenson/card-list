@@ -19,7 +19,7 @@
   "box": "Boite",
   "packs": "Paquet",
   "search-for-data": "Recherche en cours...",
-  "info-text": "The information can be edited",
+  "info-text": "Les informations peuvent être modifiées",
   "language": {
     "title": "Langues",
     "en": "Anglais",
@@ -28,6 +28,7 @@
     "ht": "Creole Haitien"
   },
   "citizen-details": "Détails du citoyen",
+  "delivered-card": "Carte livrée",
   "home": "Accueil",
   "results": "Resultats",
   "loading": "Chargement en cours",
@@ -45,7 +46,7 @@
       "05": "Mai",
       "06": "Juin",
       "07": "Juillet",
-      "08": "Auot",
+      "08": "Aout",
       "09": "Septembre",
       "10": "Octobre",
       "11": "Novembre",

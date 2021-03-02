@@ -39,6 +39,7 @@ const Account = () => {
       reg_date,
       delivery_place,
       box,
+      status,
       packs,
     } = person;
 
@@ -55,6 +56,7 @@ const Account = () => {
       reg_date,
       delivery_place,
       box,
+      status,
       packs,
     });
   };
