@@ -42,8 +42,6 @@ function CitizenSearch() {
   const { register, handleSubmit, reset, control } = useForm();
 
   const onSubmit = async ({ day, last_name, first_name, year, month }) => {
-    reset();
-
     const dateOfBirth =
       day && month && year
         ? `${day < 10 ? `0${day}` : `${day}`}-${month}-${year}`
@@ -59,6 +57,7 @@ function CitizenSearch() {
         }),
       },
     });
+    reset();
   };
 
   const InputDate = forwardRef((props, ref) => {

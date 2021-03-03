@@ -13,11 +13,12 @@ import {
 } from "@material-ui/core";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
+import * as moment from "moment";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import CustomizedProgress from "../../components/shared/circular-progress";
+import { PuffLoader } from "react-spinners";
 import { addCitizen } from "../../redux/actions/citizen.action";
 
 const StyledTableCell = withStyles((theme) => ({
@@ -65,13 +66,23 @@ const CitizenResults = ({
   let { t } = useTranslation();
   let router = useRouter();
 
+  const local = router.locale === "ht" ? "fr" : router.locale;
+
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
       <Box>
         <TableContainer className={classes.container}>
           <Table stickyHeader aria-label="sticky table">
             {loading ? (
-              <CustomizedProgress />
+              <Box
+                display="flex"
+                justifyContent="center"
+                m={1}
+                p={1}
+                bgcolor="background.transparent"
+              >
+                <PuffLoader color={"#123abc"} loading={loading} />
+              </Box>
             ) : (
               <>
                 <TableHead>
@@ -87,41 +98,55 @@ const CitizenResults = ({
                 </TableHead>
                 <TableBody>
                   {citizens &&
-                    citizens.slice(0, limit).map((citizen) => (
-                      <StyledTableRow hover key={citizen.id}>
-                        <StyledTableCell>
-                          <Button
-                            variant="outlined"
-                            color="secondary"
-                            onClick={() => {
-                              dispatch(addCitizen(citizen));
-                              router.push(
-                                `/card-result/card-result-info?info=${citizen.id}`,
-                                null,
-                                {
-                                  shallow: true,
-                                }
-                              );
-                            }}
-                          >
-                            {t("common:btn-info")}
-                          </Button>
-                        </StyledTableCell>
-                        <StyledTableCell>
-                          <Typography color="textPrimary" variant="body1">
-                            {citizen.last_name}
-                          </Typography>
-                        </StyledTableCell>
-                        <StyledTableCell>{citizen.first_name}</StyledTableCell>
-                        <StyledTableCell>{citizen.middle_name}</StyledTableCell>
-                        <StyledTableCell>
-                          {citizen.dob}
-                          {/* {moment(citizen.dob).format("DD/MM/YYYY")} */}
-                        </StyledTableCell>
-                        <StyledTableCell>{citizen.pob}</StyledTableCell>
-                        <StyledTableCell>{citizen.reg_place}</StyledTableCell>
-                      </StyledTableRow>
-                    ))}
+                    citizens.slice(0, limit).map((citizen) => {
+                      const dateFormated = moment(
+                        citizen.dob,
+                        "DD-MM-YYYY"
+                      ).format("YYYY-MM-DD");
+                      return (
+                        <StyledTableRow hover key={citizen.id}>
+                          <StyledTableCell>
+                            <Button
+                              variant="outlined"
+                              color="secondary"
+                              onClick={() => {
+                                dispatch(addCitizen(citizen));
+                                router.push(
+                                  `/card-result/card-result-info?info=${citizen.id}`,
+                                  null,
+                                  {
+                                    shallow: true,
+                                  }
+                                );
+                              }}
+                            >
+                              {t("common:btn-info")}
+                            </Button>
+                          </StyledTableCell>
+                          <StyledTableCell>
+                            <Typography color="textPrimary" variant="body1">
+                              {citizen.last_name}
+                            </Typography>
+                          </StyledTableCell>
+                          <StyledTableCell>
+                            {citizen.first_name}
+                          </StyledTableCell>
+                          <StyledTableCell>
+                            {citizen.middle_name}
+                          </StyledTableCell>
+                          <StyledTableCell>
+                            {moment(dateFormated)
+                              .locale(local)
+                              .format("LL")
+                              .toUpperCase()}
+                            {/* {citizen.dob} */}
+                            {/* {moment(citizen.dob).format("DD/MM/YYYY")} */}
+                          </StyledTableCell>
+                          <StyledTableCell>{citizen.pob}</StyledTableCell>
+                          <StyledTableCell>{citizen.reg_place}</StyledTableCell>
+                        </StyledTableRow>
+                      );
+                    })}
                 </TableBody>
               </>
             )}
