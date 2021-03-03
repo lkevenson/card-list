@@ -34,9 +34,7 @@ const Account = () => {
       first_name,
       middle_name,
       dob,
-      reg_place,
       pob,
-      reg_date,
       delivery_place,
       box,
       status,
@@ -49,11 +47,9 @@ const Account = () => {
       middle_name,
       dob,
       pob,
-      reg_place,
     });
 
     setData({
-      reg_date,
       delivery_place,
       box,
       status,

@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
 
 const Profile = ({ className, citizen, ...rest }) => {
   const classes = useStyles();
-  const { last_name, first_name, middle_name, dob, pob, center } = citizen;
+  const { last_name, first_name, middle_name, dob } = citizen;
   const local = Router.locale === "ht" ? "fr" : Router.locale;
   const dateFormated = moment(dob, "DD-MM-YYYY").format("YYYY-MM-DD");
   return (
@@ -27,7 +27,7 @@ const Profile = ({ className, citizen, ...rest }) => {
             {`${last_name}, ${first_name}`}
           </Typography>
           <Typography color="textSecondary" gutterBottom variant="h3">
-            {middle_name ? middle_name : ""}
+            {middle_name !== "-" ? middle_name : ""}
           </Typography>
           <Typography color="textSecondary" gutterBottom variant="subtitle1">
             {moment(dateFormated).locale(local).format("LL").toUpperCase()}

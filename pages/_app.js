@@ -42,7 +42,7 @@ const MyApp = (props) => {
         <ThemeProvider theme={theme}>
           <GlobalStyles />
           <div className={classes.root}>
-            <AppBar title="Office Nationale Identification" />
+            <AppBar title="Office Nationale d'Identification" />
             <div className={classes.wrapper}>
               <div className={classes.contentContainer}>
                 <div className={classes.content}>

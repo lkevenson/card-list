@@ -34,7 +34,7 @@ const ResultCard = ({ title, value, className, ...rest }) => {
             </Typography>
           </Grid>
           <Grid item md={12}>
-            {value && (
+            {value !== "-" && (
               <Paper className={classes.orange} variant="rounded">
                 {value}
               </Paper>

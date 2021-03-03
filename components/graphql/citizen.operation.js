@@ -9,9 +9,8 @@ export const SEARCH_CITIZEN_QUERY = gql`
         first_name
         middle_name
         dob
-        reg_place
         pob
-        reg_date
+        delivery_place
         box
         packs
         status
@@ -39,7 +38,6 @@ export const CITIZEN_BY_ID_QUERY = gql`
       first_name
       middle_name
       dob
-      reg_place
       pob
       reg_date
       box

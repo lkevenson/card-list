@@ -93,7 +93,6 @@ const CitizenResults = ({
                     <StyledTableCell>{t("common:middle-name")}</StyledTableCell>
                     <StyledTableCell>{t("common:dob")}</StyledTableCell>
                     <StyledTableCell>{t("common:pob")}</StyledTableCell>
-                    <StyledTableCell>{t("common:reg-place")}</StyledTableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -139,11 +138,8 @@ const CitizenResults = ({
                               .locale(local)
                               .format("LL")
                               .toUpperCase()}
-                            {/* {citizen.dob} */}
-                            {/* {moment(citizen.dob).format("DD/MM/YYYY")} */}
                           </StyledTableCell>
                           <StyledTableCell>{citizen.pob}</StyledTableCell>
-                          <StyledTableCell>{citizen.reg_place}</StyledTableCell>
                         </StyledTableRow>
                       );
                     })}
