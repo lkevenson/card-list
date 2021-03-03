@@ -45,8 +45,9 @@ const SearchPage = ({ loading }) => {
           </Box>
 
           <Divider />
+          <Box m={1} p={1} />
           <Typography
-            variant="h5"
+            variant="h4"
             align="center"
             color="textSecondary"
             paragraph

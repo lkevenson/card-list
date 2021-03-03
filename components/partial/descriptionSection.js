@@ -20,7 +20,15 @@ const DescriptionSection = () => {
       </Typography>
       <Divider variant="fullWidth" />
       <Box paddingTop={2} />
-      <Typography variant="body2" component="p">
+      <Typography
+        variant="body2"
+        component="p"
+        gutterBottom
+        paragraph
+        align="justify"
+        variantMapping="p"
+        display="block"
+      >
         {t("description-content")}
       </Typography>
     </div>

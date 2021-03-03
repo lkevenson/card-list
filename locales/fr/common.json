@@ -8,7 +8,7 @@
   "btn-info": "Afficher",
   "btn-home": "Accueil",
   "description-title": "Description ",
-  "description-content": "Bienvenue au portail d'auto-services de l’Office National d’Identification. A partir de ce portail, l’ONI vous donne la possibilité d’accéder à certains de ses services via son site internet www.oni.gouv.ht dont la localisation de votre carte ou le statut de votre demande de CIN.Ce service  est accessible 24h/24 et sept jours sur sept. La mise en ligne de ce portail s’inscrit dans la démarche d’offrir aux citoyen-nes une meilleure qualité et accessibilité des services tout en renouvelant l’engagement de l’institution à respecter ce droit qu’est l’Identité.",
+  "description-content": "Bienvenue au portail d'auto-services de l’Office National d’Identification. A partir de ce portail, l’ONI vous donne la possibilité d’accéder à certains de ses services via son site internet www.oni.gouv.ht dont la localisation de votre carte ou le statut de votre demande de CIN.<p>Ce service  est accessible 24h/24 et sept jours sur sept. La mise en ligne de ce portail s’inscrit dans la démarche d’offrir aux citoyen-nes une meilleure qualité et accessibilité des services tout en renouvelant l’engagement de l’institution à respecter ce droit qu’est l’Identité.</p>",
   "record-not-found": "Aucun Enregistrement Trouvé!!!",
   "middle-name": "Second prénom",
   "pob": "Lieu de Naissance",
@@ -33,7 +33,7 @@
   "results": "Resultats",
   "loading": "Chargement en cours",
   "waiting": "Veuillez patientez",
-  "contact": "Nous Contactez",
+  "contact": "Veuillez contacter l’Unité de Traitement de Doléances de l’ONI en composant le 8822 gratuitement.",
   "calendar": {
     "day": "Jour",
     "month": "Mois",

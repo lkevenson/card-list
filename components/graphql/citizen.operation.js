@@ -39,7 +39,6 @@ export const CITIZEN_BY_ID_QUERY = gql`
       middle_name
       dob
       pob
-      reg_date
       box
       packs
     }

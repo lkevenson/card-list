@@ -74,19 +74,9 @@ const CardResultList = () => {
         );
       } else {
         if (load) {
-          return (
-            // <Typography variant="h2" component="p">
-            //   {t("search-for-data")}
-            // </Typography>
-            <SearchPage loading={load} />
-          );
+          return <SearchPage loading={load} />;
         } else {
-          return (
-            // <Typography variant="h2" component="p">
-            //   {t("record-not-found")}
-            // </Typography>
-            <NoResultPage />
-          );
+          return <NoResultPage />;
         }
       }
     }
