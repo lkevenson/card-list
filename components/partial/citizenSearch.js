@@ -5,6 +5,7 @@ import {
   IconButton,
   MenuItem,
   TextField,
+  Typography,
 } from "@material-ui/core";
 import CalendarIcon from "@material-ui/icons/CalendarToday";
 import * as moment from "moment";
@@ -41,7 +42,7 @@ function CitizenSearch() {
 
   const { register, handleSubmit, reset, control } = useForm();
 
-  const onSubmit = async ({ day, last_name, first_name, year, month }) => {
+  const onSubmit = ({ day, last_name, first_name, year, month }) => {
     const dateOfBirth =
       day && month && year
         ? `${day < 10 ? `0${day}` : `${day}`}-${month}-${year}`
@@ -123,7 +124,9 @@ function CitizenSearch() {
           autoComplete="first-name"
           // autoFocus
         />
-
+        <Typography color="textSecondary" variant="body2">
+          {`${t("dob")}`}
+        </Typography>
         <Grid container spacing={1}>
           <Grid item md={3} xs={3}>
             <TextField
