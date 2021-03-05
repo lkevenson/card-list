@@ -109,7 +109,7 @@ function CitizenSearch() {
           id="last_name"
           label={`${t("last-name")}`}
           name="last_name"
-          autoComplete="last-name"
+          // autoComplete="last-name"
           autoFocus
         />
         <TextField
@@ -121,7 +121,7 @@ function CitizenSearch() {
           id="first_name"
           label={`${t("first-name")}`}
           name="first_name"
-          autoComplete="first-name"
+          // autoComplete="first-name"
           // autoFocus
         />
         <Typography color="textSecondary" variant="body2">
