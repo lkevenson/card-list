@@ -8,9 +8,9 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
+import ResultCard from "components/shared/result-card";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
-import ResultCard from "../shared/result-card";
 
 const CardHistory = (props) => {
   const { data } = props;

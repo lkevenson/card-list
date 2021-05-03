@@ -10,7 +10,7 @@ function AppLink({ children, href, ...rest }) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    router.push(href);
+    router.replace(href);
   };
 
   return (

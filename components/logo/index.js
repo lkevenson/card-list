@@ -1,6 +1,6 @@
+import AppLink from "components/shared/app-link/app-link";
 import Image from "next/image";
 import React from "react";
-import AppLink from "../components/shared/app-link";
 
 const Logo = ({ href, ...rest }) => {
   return (

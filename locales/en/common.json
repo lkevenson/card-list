@@ -1,6 +1,7 @@
 {
   "error-with-status": "A {{statusCode}} error occurred on server",
   "error-without-status": "An error occurred on the server",
+  "enfo": "You can search with the name and first name (s) or with last name, first name and date of birth",
   "last-name": "Lastname",
   "first-name": "Firstname",
   "dob": "Date of Birth",

@@ -19,7 +19,7 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { PuffLoader } from "react-spinners";
-import { addCitizen } from "../../redux/actions/citizen.action";
+import { addCitizen } from "redux/actions/citizen.action";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -110,8 +110,8 @@ const CitizenResults = ({
                               color="secondary"
                               onClick={() => {
                                 dispatch(addCitizen(citizen));
-                                router.push(
-                                  `/card-result/card-result-info?info=${citizen.id}`,
+                                router.replace(
+                                  `/card-result/info?info=${citizen.id}`,
                                   null,
                                   {
                                     shallow: true,

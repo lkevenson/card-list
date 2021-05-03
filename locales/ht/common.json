@@ -1,6 +1,7 @@
 {
   "error-with-status": "A {{statusCode}} error occurred on server",
   "error-without-status": "An error occurred on the server",
+  "enfo": "Vous pouvez faire une recherche avec le nom et le(s) prenom ou avec nom, prenom et date de naissance",
   "last-name": "Sinyati",
   "first-name": "Non",
   "dob": "Dat Nesans",
@@ -9,7 +10,7 @@
   "btn-home": "Akey",
   "description-title": "Deskripsyon",
   "description-content": "Kontni Deskripsyon",
-  "record-not-found": "Nou pa rive jwenn anyen!!!",
+  "record-not-found": "Kat la pa envantorye",
   "middle-name": "dezyem non",
   "pob": "Lieu de Naissance",
   "reg-place": "Sant Anregistreman",

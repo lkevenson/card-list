@@ -2,20 +2,18 @@ import {
   Box,
   Button,
   Grid,
-  IconButton,
   MenuItem,
   TextField,
   Typography,
 } from "@material-ui/core";
-import CalendarIcon from "@material-ui/icons/CalendarToday";
+import Logo from "components/logo";
+import Copyright from "components/shared/copyright";
+import ReactHookFormSelect from "components/shared/react-hook-form-select";
 import * as moment from "moment";
 import useTranslation from "next-translate/useTranslation";
 import { useRouter } from "next/router";
-import React, { forwardRef } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import Logo from "../logo";
-import Copyright from "../shared/copyright";
-import ReactHookFormSelect from "../shared/react-hook-form-select";
 import useStyles from "./citizenSearch.style";
 
 const months = [
@@ -35,21 +33,19 @@ const months = [
 
 function CitizenSearch() {
   const classes = useStyles();
-  // const [startDate, setStartDate] = useState(moment().subtract(18, "years")._d);
-  // const [startDate, setStartDate] = useState(new Date());
   const router = useRouter();
   let { t } = useTranslation("common");
 
   const { register, handleSubmit, reset, control } = useForm();
 
-  const onSubmit = ({ day, last_name, first_name, year, month }) => {
+  const onSubmit = async ({ day, last_name, first_name, year, month }) => {
     const dateOfBirth =
       day && month && year
         ? `${day < 10 ? `0${day}` : `${day}`}-${month}-${year}`
         : null;
 
-    router.push({
-      pathname: "/card-result/card-result-list",
+    router.replace({
+      pathname: "/card-result/list",
       query: {
         data: JSON.stringify({
           last_name: last_name,
@@ -58,42 +54,8 @@ function CitizenSearch() {
         }),
       },
     });
-    reset();
+    // reset();
   };
-
-  const InputDate = forwardRef((props, ref) => {
-    const { value, onClick } = props;
-    return (
-      <>
-        <Grid container spacing={1}>
-          <Grid item md={10} sm={10}>
-            <TextField
-              ref={ref}
-              inputRef={register}
-              id="dob"
-              name="dob"
-              label={`${t("dob")}`}
-              defaultValue={value}
-              fullWidth
-              required
-              variant="filled"
-              onClick={onClick}
-            />
-          </Grid>
-          <Grid item md={2} sm={2}>
-            <IconButton
-              aria-label="calendar"
-              color="primary"
-              className={classes.button}
-              onClick={onClick}
-            >
-              <CalendarIcon />
-            </IconButton>
-          </Grid>
-        </Grid>
-      </>
-    );
-  });
 
   return (
     <div className={classes.paper}>
@@ -109,7 +71,6 @@ function CitizenSearch() {
           id="last_name"
           label={`${t("last-name")}`}
           name="last_name"
-          // autoComplete="last-name"
           autoFocus
         />
         <TextField
@@ -121,8 +82,6 @@ function CitizenSearch() {
           id="first_name"
           label={`${t("first-name")}`}
           name="first_name"
-          // autoComplete="first-name"
-          // autoFocus
         />
         <Typography color="textSecondary" variant="body2">
           {`${t("dob")}`}
@@ -134,7 +93,6 @@ function CitizenSearch() {
               variant="outlined"
               margin="normal"
               type="number"
-              // required
               fullWidth
               id="day"
               label={`${t("calendar.day")}`}
@@ -152,7 +110,6 @@ function CitizenSearch() {
               variant="outlined"
               margin="normal"
               defaultValue=""
-              // required
               fullWidth
             >
               {months.map(({ key }) => {
@@ -169,7 +126,6 @@ function CitizenSearch() {
               inputRef={register}
               variant="outlined"
               margin="normal"
-              // required
               fullWidth
               type="number"
               id="year"
@@ -183,25 +139,8 @@ function CitizenSearch() {
               }}
             />
           </Grid>
-          {/* minDate={moment().subtract(100, "years")._d}
-          maxDate={moment().subtract(18, "years")._d} */}
         </Grid>
-        {/* <DatePicker
-          // dateFormat="yyyy-MM-dd"
-          dateFormat="dd-MM-yyyy"
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          peekNextMonth
-          minDate={moment().subtract(100, "years")._d}
-          maxDate={moment().subtract(18, "years")._d}
-          showDisabledMonthNavigation
-          showMonthDropdown
-          showYearDropdown
-          dropdownMode="select"
-          disabledKeyboardNavigation
-          peekNextMonth={false}
-          customInput={<InputDate />}
-        /> */}
+
         <Button
           type="submit"
           fullWidth
@@ -212,7 +151,12 @@ function CitizenSearch() {
           {t("btn-search")}
         </Button>
       </form>
-      <Box mt={5}>
+
+      <Typography variant="caption" align="center" color="error">
+        <Box>{t("enfo")}</Box>
+      </Typography>
+
+      <Box mt={2}>
         <Copyright />
       </Box>
     </div>

@@ -5,10 +5,10 @@ import {
   Toolbar,
   Typography,
 } from "@material-ui/core";
+import Logo from "components/logo";
+import AppLink from "components/shared/app-link/app-link";
 import PropTypes from "prop-types";
-import Logo from "../../components/logo";
-import AppLink from "../../components/shared/app-link";
-import SplitButton from "./split-button";
+import SplitButton from "../split-button";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -25,9 +25,16 @@ const Header = (props) => {
         <Logo width={60} height={60} url={"/"} />
         <Box flexGrow={1} />
         <AppLink className={classes.link} href={"/"}>
-          <Typography variant="h3" component="p">
-            {props.title}
+          <Typography component="h2" variant="h5" color="inherit" noWrap>
+            <Box fontWeight="fontWeightBold" m={1} letterSpacing={3}>
+              {props.title.toUpperCase()}
+            </Box>
           </Typography>
+          {/* <Typography className={classes.app_name}>
+            <Box fontWeight="fontWeightBold" m={1} letterSpacing={6}>
+              {t(`app_name`)}
+            </Box>
+          </Typography> */}
         </AppLink>
         <Box flexGrow={1} />
         <SplitButton />

@@ -1,6 +1,7 @@
 {
   "error-with-status": "A ocurrido un error  {{statusCode}} en el servidor",
   "error-without-status": "A ocurrido un error en el servidor",
+  "enfo": "Puede buscar por apellido y nombre (s) o por apellido, nombre y fecha de nacimiento",
   "last-name": "Apellidos",
   "first-name": "Nombre(s) ",
   "dob": "Fecha de nacimiento",

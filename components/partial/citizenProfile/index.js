@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core";
 import clsx from "clsx";
 import * as moment from "moment";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import React from "react";
 const useStyles = makeStyles(() => ({
@@ -15,9 +15,11 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Profile = ({ className, citizen, ...rest }) => {
+  const router = useRouter();
+
   const classes = useStyles();
   const { last_name, first_name, middle_name, dob } = citizen;
-  const local = Router.locale === "ht" ? "fr" : Router.locale;
+  const local = router.locale === "ht" ? "fr" : router.locale;
   const dateFormated = moment(dob, "DD-MM-YYYY").format("YYYY-MM-DD");
   return (
     <Card className={clsx(classes.root, className)} {...rest}>

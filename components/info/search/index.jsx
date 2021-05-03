@@ -1,8 +1,8 @@
 import { Box, Container, Divider, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Copyright from "components/shared/copyright";
 import useTranslation from "next-translate/useTranslation";
 import { BeatLoader } from "react-spinners";
-import Copyright from "../shared/copyright";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
